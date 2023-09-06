@@ -1,5 +1,5 @@
 use std::fmt::Debug;
-use std::io::Error;
+use std::io::{Error, stdout, Write};
 use std::process;
 use std::sync::OnceLock;
 
@@ -96,6 +96,8 @@ fn add_item_menu(items: &mut Vec<ToDoItem>) {
             .trim()
             .to_string();
         if new_item.is_empty() {
+            print!("[1A");
+            stdout().flush().unwrap();
             break;
         }
         items.push(ToDoItem { text: new_item, completed: false });
