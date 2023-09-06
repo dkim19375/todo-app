@@ -37,9 +37,7 @@ fn main_menu(items: &mut Vec<ToDoItem>) -> Result<(), Error> {
         1 => add_item_menu(items),
         2 => remove_item_menu(items),
         3 => exit(),
-        _ => {
-            panic!("Invalid option choice - should've been between 0 through 3");
-        }
+        _ => unreachable!("Invalid option choice - should've been between 0 through 3")
     };
 
     Ok(())
