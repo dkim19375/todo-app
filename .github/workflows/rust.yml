@@ -12,5 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Build Rust
+      run: cargo build --verbose
     - name: Test Rust
       run: cargo test --verbose
