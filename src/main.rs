@@ -48,7 +48,7 @@ fn get_formatted_items(items: &[ToDoItem]) -> Vec<String> {
 }
 
 fn view_list(items: &mut Vec<ToDoItem>) {
-    println!("{}", style("To-Do List Items:").magenta().bold());
+    println!("{}", style("To-Do List Items:").yellow().bold());
     if items.is_empty() {
         println!("{}", style("Empty!").green());
         return;
