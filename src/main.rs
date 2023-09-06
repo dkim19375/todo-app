@@ -12,10 +12,14 @@ static THEME: OnceLock<ColorfulTheme> = OnceLock::new();
 fn main() -> Result<(), Error> {
     THEME.set(ColorfulTheme::default()).ok().unwrap();
     println!("{}", style("===============    To-Do App    ===============").cyan().bold().bright());
-    main_menu(vec![])
+
+    let mut items = vec![];
+    loop {
+        main_menu(&mut items)?;
+    }
 }
 
-fn main_menu(mut items: Vec<ToDoItem>) -> Result<(), Error> {
+fn main_menu(items: &mut Vec<ToDoItem>) -> Result<(), Error> {
     let options = vec![
         "View To-Do List".into(),
         "Add item".into(),
@@ -29,16 +33,16 @@ fn main_menu(mut items: Vec<ToDoItem>) -> Result<(), Error> {
         .interact()?;
 
     match option {
-        0 => view_list(&mut items),
-        1 => add_item_menu(&mut items),
-        2 => remove_item_menu(&mut items),
+        0 => view_list(items),
+        1 => add_item_menu(items),
+        2 => remove_item_menu(items),
         3 => exit(),
         _ => {
             panic!("Invalid option choice - should've been between 0 through 3");
         }
     };
 
-    main_menu(items)
+    Ok(())
 }
 
 fn get_formatted_items(items: &[ToDoItem]) -> Vec<String> {
