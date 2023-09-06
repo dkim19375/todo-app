@@ -90,6 +90,7 @@ fn add_item_menu(items: &mut Vec<ToDoItem>) {
                 }
             })
             .with_prompt("Item to add")
+            .default("".into())
             .interact_text()
             .unwrap()
             .trim()
