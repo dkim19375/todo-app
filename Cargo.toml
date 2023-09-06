@@ -8,5 +8,4 @@ edition = "2021"
 [dependencies]
 console = "0.15.7"
 dialoguer = "0.10.4"
-inquire = { version = "0.6.2", default-features = false, features = ["console", "macros"] }
 once_cell = "1.18.0"
